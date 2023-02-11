@@ -1,0 +1,19 @@
+{
+  "name": "parsons-problem-system",
+  "version": "0.0.1",
+  "description": "web system for making, distributing, and doing parsons problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristoferbuno/parsons-problem-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristoferbuno/parsons-problem-system/issues"
+  },
+  "homepage": "https://github.com/kristoferbuno/parsons-problem-system#readme"
+}
