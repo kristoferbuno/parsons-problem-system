@@ -57,6 +57,7 @@ ctrl-f for "getAll" to get all query params from the URL
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            href="/"
           >
             <Snowboarding />
           </IconButton>
