@@ -31,6 +31,19 @@ class Person extends React.Component <any, any>{
   }
 }
 
+function ReturnDraggableElements(list: string[]) {
+    let elements = []
+    for (let string in list) {
+        elements.push(
+        <Draggable draggableId="element" index={0}>
+        {
+            provided => (
+          <Person provided={provided} innerRef={provided.innerRef} />
+        )}
+        </Draggable>)
+    }
+    return elements;
+}
 
 
 class DraggableList extends React.Component<any, any> {
@@ -41,13 +54,7 @@ class DraggableList extends React.Component<any, any> {
         <Droppable droppableId="droppable">
           {provided => (
             <Paper ref={provided.innerRef}>
-                <Card ref={provided.innerRef}>
-                <Draggable draggableId="element" index={0}>
-                {provided => (
-                  <Person provided={provided} innerRef={provided.innerRef} />
-                )}
-              </Draggable>
-                </Card>
+               {ReturnDraggableElements(this.props.lines)}
               {provided.placeholder}
             </Paper>
           )}
