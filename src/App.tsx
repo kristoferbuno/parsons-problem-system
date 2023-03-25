@@ -10,6 +10,7 @@ import {
 import MenuIcon, { Snowboarding } from '@mui/icons-material/';
 
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import NewProblemView from './NewProblem';
 
 function App() {
 
@@ -31,7 +32,14 @@ ctrl-f for "getAll" to get all query params from the URL
         <div>
           <h1>Hello World</h1>
           <Link to="about">About Us</Link>
-          <Link to="problem">Demo Problem</Link>
+          <br/>
+          <Link to="solve">Demo Problem</Link>
+          <br/>
+          <Link to="new">New Problem</Link>
+          <br/>
+          <Link to="submitted">Submitted</Link>
+          <br/>
+          <Link to="solution">Solution</Link>
         </div>
       ),
     },
@@ -40,9 +48,21 @@ ctrl-f for "getAll" to get all query params from the URL
       element: <div>About</div>,
     },
     {
-      path: "problem",
+      path: "solve",
       element: <DraggableList entries={dummyStringList}/>
-    }
+    },
+    {
+      path: "new",
+      element: <NewProblemView/> // making a parson's problem
+    },
+    {
+      path: "submitted",
+      element: <div>submitted</div> // viewing list of submitted parsons' problems
+    },
+    {
+      path: "solution",
+      element: <div>solution</div> // viewing a specific solution
+    },
   ]);
   
 
@@ -62,7 +82,7 @@ ctrl-f for "getAll" to get all query params from the URL
             <Snowboarding />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Parson problem
+            Parson's problems platform
           </Typography>
         </Toolbar>
       </AppBar>
