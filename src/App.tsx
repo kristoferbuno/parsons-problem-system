@@ -19,11 +19,11 @@ ctrl-f for "getAll" to get all query params from the URL
 */
 
 
-  let dummyStringList: string[] = ['A', 'B'];
+  let dummyStringList: string[] = ['A', 'B', 'C'];
 
   return (
     <div className="App">
-          <DraggableList>
+          <DraggableList lines={dummyStringList}>
           </DraggableList>
     </div>
   );

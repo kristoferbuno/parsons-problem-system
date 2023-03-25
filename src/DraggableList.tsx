@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { Card, Paper } from '@mui/material';
 
 
 
@@ -32,21 +33,23 @@ class Person extends React.Component <any, any>{
 
 
 
-class DraggableList extends React.Component {
+class DraggableList extends React.Component<any, any> {
   render() {
     return (
       <DragDropContext onDragEnd={() => {}}>
         <h3>My person</h3>
         <Droppable droppableId="droppable">
           {provided => (
-            <List provided={provided} innerRef={provided.innerRef}>
-              <Draggable draggableId="person" index={0}>
+            <Paper ref={provided.innerRef}>
+                <Card ref={provided.innerRef}>
+                <Draggable draggableId="element" index={0}>
                 {provided => (
                   <Person provided={provided} innerRef={provided.innerRef} />
                 )}
               </Draggable>
+                </Card>
               {provided.placeholder}
-            </List>
+            </Paper>
           )}
         </Droppable>
       </DragDropContext>
