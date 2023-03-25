@@ -1,4 +1,4 @@
-import { Avatar, ButtonGroup, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
@@ -78,9 +78,12 @@ function DraggableList(props: DraggableListProps) {
                         </ButtonGroup>
                     }
                     >
-                    <ListItemText
+                        <Card>
+                                                <ListItemText
                         primary={list[i]}
                     />
+                        </Card>
+
                 </ListItem>
             )
         }
@@ -93,9 +96,12 @@ function DraggableList(props: DraggableListProps) {
     <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
       Avatar with text and icon
     </Typography>
-      <List>
-        {makeItemsFromStrings(getMorphedList(order, props.entries))}
-      </List>
+    <Paper elevation={4}>
+        <List>
+            {makeItemsFromStrings(getMorphedList(order, props.entries))}
+        </List>
+    </Paper>
+
   </Grid>
 }
 
