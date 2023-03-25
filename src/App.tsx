@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import DraggableList from './DraggableList';
-
-let dummyStringList: string[] = ['A', 'B'];
+import { DragDropContext } from 'react-beautiful-dnd';
 
 function App() {
+
+  const onDragEnd = useCallback(() => {
+    // the only one that is required
+  }, []);
 
 /* 
 TODO: get query params from URL and assign to some variable of type string[]
@@ -15,23 +18,13 @@ https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-
 ctrl-f for "getAll" to get all query params from the URL
 */
 
+
+  let dummyStringList: string[] = ['A', 'B'];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <DraggableList entries={dummyStringList}/>
-      </header>
+          <DraggableList>
+          </DraggableList>
     </div>
   );
 }

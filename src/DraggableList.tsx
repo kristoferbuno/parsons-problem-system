@@ -1,27 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactDOM from 'react-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
-/*
-DraggableList
-entries: type String[], a list of strings that will be displayed as draggable elements in this component
 
-return:
-    a component that contains a list of strings that can be dragged around and rearranged
-
-
-resources:
-https://react-dnd.github.io/react-dnd/examples/sortable/simple
-https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortable/simple
-
-*/
-
-type DraggableListProps = {
-    entries: string[]
+class List extends React.Component <any, any>{
+  render() {
+    const { provided, innerRef, children } = this.props;
+    return (
+      <div {...provided.droppableProps} ref={innerRef}>
+        {children}
+      </div>
+    );
+  }
 }
 
-function DraggableList(props: DraggableListProps) {
-    return <div></div>;
+class Person extends React.Component <any, any>{
+  render() {
+    const { provided, innerRef } = this.props;
+    return (
+      <div
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        ref={innerRef}
+      >
+        'I am a person, I think..'
+      </div>
+    );
+  }
+}
+
+
+
+class DraggableList extends React.Component {
+  render() {
+    return (
+      <DragDropContext onDragEnd={() => {}}>
+        <h3>My person</h3>
+        <Droppable droppableId="droppable">
+          {provided => (
+            <List provided={provided} innerRef={provided.innerRef}>
+              <Draggable draggableId="person" index={0}>
+                {provided => (
+                  <Person provided={provided} innerRef={provided.innerRef} />
+                )}
+              </Draggable>
+              {provided.placeholder}
+            </List>
+          )}
+        </Droppable>
+      </DragDropContext>
+    );
+  }
 }
 
 export default DraggableList;
