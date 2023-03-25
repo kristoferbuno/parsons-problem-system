@@ -1,8 +1,6 @@
 import { Avatar, ButtonGroup, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import FolderIcon from '@mui/icons-material/Folder';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
 
 

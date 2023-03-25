@@ -7,6 +7,9 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import MenuIcon, { Snowboarding } from '@mui/icons-material/';
+
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
 
 function App() {
 
@@ -46,6 +49,22 @@ ctrl-f for "getAll" to get all query params from the URL
   return (
     
     <div className="App">
+            <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <Snowboarding />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Parson problem
+          </Typography>
+        </Toolbar>
+      </AppBar>
           <RouterProvider router={router}/>
     </div>
   );
