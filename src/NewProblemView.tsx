@@ -27,9 +27,12 @@ function NewProblemView() {
         rows={4}
         defaultValue="Default Value">
         </TextField>
-
     // TODO: have the textfield submit the value to the API route POST /parsons/
     //      ideally done with "submit" button
+
+    // add fields for name, description of problem
+    // also fields to identify creator
+    return <div/>
 }
 
 export default NewProblemView;

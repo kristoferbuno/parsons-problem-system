@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import './App.css';
-import DraggableList from './DraggableList';
+import DraggableList from './SolveProblemView';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,7 +10,9 @@ import {
 import MenuIcon, { Snowboarding } from '@mui/icons-material/';
 
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
-import NewProblemView from './NewProblem';
+import NewProblemView from './NewProblemView';
+import SolutionListView from './SolutionListView';
+import SolveProblemView from './SolveProblemView';
 
 function App() {
 
@@ -49,7 +51,7 @@ ctrl-f for "getAll" to get all query params from the URL
     },
     {
       path: "solve",
-      element: <DraggableList entries={dummyStringList}/>
+      element: <SolveProblemView entries={dummyStringList}/>
     },
     {
       path: "new",
@@ -57,7 +59,7 @@ ctrl-f for "getAll" to get all query params from the URL
     },
     {
       path: "submitted",
-      element: <div>submitted</div> // viewing list of submitted parsons' problems
+      element: <SolutionListView></SolutionListView> // viewing list of submitted parsons' problems
     },
     {
       path: "solution",

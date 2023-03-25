@@ -31,7 +31,7 @@ function getMorphedList(order: number[], list: string[]) {
 }
 
 
-function DraggableList(props: DraggableListProps) {
+function SolveProblemView(props: DraggableListProps) {
 
     let keys: number[] = []
     for (let i = 0; i < props.entries.length; i++) {
@@ -105,4 +105,4 @@ function DraggableList(props: DraggableListProps) {
   </Grid>
 }
 
-export default DraggableList;
+export default SolveProblemView;
