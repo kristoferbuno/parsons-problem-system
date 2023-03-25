@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import DraggableList from './DraggableList';
-import { DragDropContext } from 'react-beautiful-dnd';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
 function App() {
-
-  const onDragEnd = useCallback(() => {
-    // the only one that is required
-  }, []);
 
 /* 
 TODO: get query params from URL and assign to some variable of type string[]
@@ -21,11 +21,35 @@ ctrl-f for "getAll" to get all query params from the URL
 
   let dummyStringList: string[] = ['A', 'B', 'C', 'D', 'E'];
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <div>
+          <h1>Hello World</h1>
+          <Link to="about">About Us</Link>
+          <Link to="problem">Demo Problem</Link>
+        </div>
+      ),
+    },
+    {
+      path: "about",
+      element: <div>About</div>,
+    },
+    {
+      path: "problem",
+      element: <DraggableList entries={dummyStringList}/>
+    }
+  ]);
+  
+
   return (
+    
     <div className="App">
-          <DraggableList entries={dummyStringList}/>
+          <RouterProvider router={router}/>
     </div>
   );
+
 }
 
 export default App;
