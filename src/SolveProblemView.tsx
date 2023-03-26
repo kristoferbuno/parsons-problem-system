@@ -18,10 +18,7 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 */
 
-if (process.env.NODE_ENV != "production")
-{
-    require('dotenv').config();
-}
+const API_URL = process.env.REACT_APP_API_URI
 
 type DraggableListProps = {
     entries: string[]
@@ -52,6 +49,8 @@ function SubmitSolution(id: string, data: string[]) {
 
 
 function SolveProblemView(props: DraggableListProps) {
+
+    console.log(API_URL)
 
     let keys: number[] = Array.from(props.entries.keys())
 

@@ -18,6 +18,9 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 */
 
+
+const API_URL = process.env.REACT_APP_API_URI
+
 function SubmitProblem(title: string, data: string, email: string, description: string) {
     let payload = {
         "submitter": email,
