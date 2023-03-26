@@ -31,7 +31,7 @@ function SubmitProblem(title: string, data: string, email: string, description: 
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': API_URL},
+        'Access-Control-Allow-Origin': API_URL? API_URL : "*"},
         body: JSON.stringify({body: payload})
     };
     fetch(API_URL+'/problem', requestOptions)
