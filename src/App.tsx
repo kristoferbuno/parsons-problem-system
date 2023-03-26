@@ -9,10 +9,11 @@ import {
 } from "react-router-dom";
 import MenuIcon, { Snowboarding } from '@mui/icons-material/';
 
-import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import NewProblemView from './NewProblemView';
 import SolutionListView from './SolutionListView';
 import SolveProblemView from './SolveProblemView';
+import { padding } from '@mui/system';
 
 function App() {
 
@@ -88,7 +89,11 @@ ctrl-f for "getAll" to get all query params from the URL
           </Typography>
         </Toolbar>
       </AppBar>
-          <RouterProvider router={router}/>
+      <div style={{padding: "1rem"}}>
+      <Paper variant="outlined" style={{padding: "1rem"}}>
+        <RouterProvider router={router}/>
+      </Paper>
+      </div>
     </div>
   );
 
