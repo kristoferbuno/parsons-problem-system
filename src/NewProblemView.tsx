@@ -33,7 +33,7 @@ function SubmitProblem(title: string, data: string, email: string, description: 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({body: payload})
     };
-    fetch('https://reqres.in/api/articles', requestOptions)
+    fetch(API_URL+'/problem', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
 }
