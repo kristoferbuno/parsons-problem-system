@@ -20,7 +20,7 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 
 function ProblemListView() {
-    // TODO: pull list of solutions from GET /problems/ API route
+    // TODO: pull list of problems from GET /problems/ API route
     //          display metadata about problem including
     //              name
     //              description
