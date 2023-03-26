@@ -18,6 +18,11 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 */
 
+if (process.env.NODE_ENV != "production")
+{
+    require('dotenv').config();
+}
+
 type DraggableListProps = {
     entries: string[]
 }
