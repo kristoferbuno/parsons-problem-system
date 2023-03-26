@@ -67,10 +67,8 @@ ctrl-f for "getAll" to get all query params from the URL
       element: <div>solution</div> // viewing a specific solution
     },
   ]);
-  
 
   return (
-    
     <div className="App">
             <AppBar position="static">
         <Toolbar>
@@ -79,7 +77,7 @@ ctrl-f for "getAll" to get all query params from the URL
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 0 }}
             href="/"
           >
             <Snowboarding />
@@ -90,7 +88,7 @@ ctrl-f for "getAll" to get all query params from the URL
         </Toolbar>
       </AppBar>
       <div style={{padding: "1rem"}}>
-      <Paper variant="outlined" style={{padding: "1rem"}}>
+      <Paper   style={{padding: "1rem"}}>
         <RouterProvider router={router}/>
       </Paper>
       </div>

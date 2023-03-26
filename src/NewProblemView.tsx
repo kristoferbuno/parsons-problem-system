@@ -22,17 +22,16 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 function NewProblemView() {
     return <TextField
         id="outlined-multiline-static"
-        label="Multiline"
+        label="Code"
         multiline
-        rows={4}
-        defaultValue="Default Value">
+        rows={6}
+        defaultValue="">
         </TextField>
     // TODO: have the textfield submit the value to the API route POST /parsons/
     //      ideally done with "submit" button
 
     // add fields for name, description of problem
     // also fields to identify creator
-    return <div/>
 }
 
 export default NewProblemView;
