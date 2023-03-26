@@ -1,6 +1,7 @@
 import datetime
 import os
 from flask import Flask, request, jsonify
+form flask_cors import CORS
 
 
 import firebase_admin
@@ -14,6 +15,8 @@ db = firestore.client()
 
 
 app = Flask(__name__)
+CORS(app)
+
 
 
 @app.route('/', methods=['GET'])
