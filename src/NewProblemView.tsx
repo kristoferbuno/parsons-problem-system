@@ -34,7 +34,7 @@ function SubmitProblem(title: string, data: string, email: string, description: 
         'Access-Control-Allow-Origin': API_URL? API_URL : "*"},
         body: JSON.stringify({body: payload})
     };
-    fetch(API_URL+'/problem', requestOptions)
+    fetch(API_URL+'problem', requestOptions)
         .then(response => response.json())
         .then(data => console.log(data))
 }
