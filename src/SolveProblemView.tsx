@@ -1,7 +1,7 @@
-import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from '@mui/material';
+import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
+import { ArrowDownward, ArrowUpward, Fingerprint, Send } from '@mui/icons-material';
 
 
 /*
@@ -30,16 +30,28 @@ function getMorphedList(order: number[], list: string[]) {
     return morphed_list
 }
 
+function SubmitSolution(id: string, data: string[]) {
+    let payload = {
+        "id": id,
+        "solution": data
+    }
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({body: payload})
+    };
+    fetch('https://reqres.in/api/articles', requestOptions)
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
+
 
 function SolveProblemView(props: DraggableListProps) {
 
-    let keys: number[] = []
-    for (let i = 0; i < props.entries.length; i++) {
-        keys.push(i)
-    }
-    console.log(keys)
+    let keys: number[] = Array.from(props.entries.keys())
 
     const [order, setOrder] = useState(keys);
+    const [UFID, setUFID] = useState("");
 
     function moveItemUp(key: number) {
         let order_copy = order.slice()
@@ -78,8 +90,10 @@ function SolveProblemView(props: DraggableListProps) {
                         </ButtonGroup>
                     }
                     >
-                        <Card>
-                                                <ListItemText
+                        <Card 
+                        style={{fontFamily: "monospace", width: "90%", padding: "1rem"}}
+                        >
+                        <ListItemText
                         primary={list[i]}
                     />
                         </Card>
@@ -94,15 +108,29 @@ function SolveProblemView(props: DraggableListProps) {
 
     return <Grid item xs={12} md={6}>
     <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-      Avatar with text and icon
+      Reorder the code
     </Typography>
-    <Paper elevation={4}>
+    <Paper variant="outlined">
         <List>
             {makeItemsFromStrings(getMorphedList(order, props.entries))}
         </List>
     </Paper>
-
+    <br></br>
+    
+    <Grid container spacing={1} minHeight={100}>   
+    <Grid item xs={4.5}/>
+        <Grid xs={2} display="flex" justifyContent="center" alignItems="center">
+            <TextField id="outlined-basic" label="UFID" variant="outlined" onChange={e => setUFID(e.target.value)}/> 
+        </Grid>
+        <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
+            <IconButton color="success" onClick={() => SubmitSolution(UFID, props.entries)} disabled={UFID.length != 8}>
+                <Send />
+            </IconButton>
+        </Grid>
+        <Grid item xs={4.5}/>
+    </Grid>
   </Grid>
+  
 }
 
 export default SolveProblemView;
