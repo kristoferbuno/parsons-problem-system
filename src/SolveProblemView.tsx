@@ -118,15 +118,15 @@ function SolveProblemView(props: DraggableListProps) {
     <br></br>
     
     <Grid container spacing={1} minHeight={100}>   
-    <Grid item xs={4.5}/>
-        <Grid xs={2} display="flex" justifyContent="center" alignItems="center">
-            <TextField id="outlined-basic" label="UFID" variant="outlined" onChange={e => setUFID(e.target.value)}/> 
-        </Grid>
-        <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
-            <IconButton color="success" onClick={() => SubmitSolution(UFID, props.entries)} disabled={UFID.length != 8}>
-                <Send />
-            </IconButton>
-        </Grid>
+        <Grid item xs={4.5}/>
+            <Grid xs={2} display="flex" justifyContent="center" alignItems="center">
+                <TextField id="outlined-basic" label="UFID" variant="outlined" onChange={e => setUFID(e.target.value)}/> 
+            </Grid>
+            <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
+                <IconButton color="success" onClick={() => SubmitSolution(UFID, props.entries)} disabled={UFID.length != 8}>
+                    <Send />
+                </IconButton>
+            </Grid>
         <Grid item xs={4.5}/>
     </Grid>
   </Grid>
