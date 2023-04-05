@@ -14,6 +14,7 @@ import NewProblemView from './NewProblemView';
 import SolutionListView from './SolutionListView';
 import SolveProblemView from './SolveProblemView';
 import { padding } from '@mui/system';
+import ProblemListView from './ProblemListView';
 
 function App() {
 
@@ -57,6 +58,10 @@ ctrl-f for "getAll" to get all query params from the URL
     {
       path: "new",
       element: <NewProblemView/> // making a parson's problem
+    },
+    {
+      path: "problems",
+      element: <ProblemListView></ProblemListView> // viewing list of submitted parsons' problems
     },
     {
       path: "submitted",

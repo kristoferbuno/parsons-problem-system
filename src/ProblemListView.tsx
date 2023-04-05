@@ -1,7 +1,9 @@
-import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, TextField, Typography } from '@mui/material';
+import React, { ReactElement, useEffect, useState } from 'react';
 import logo from './logo.svg';
-import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
+import { ArrowDownward, ArrowUpward, Margin, ExpandMore } from '@mui/icons-material';
+import Problem from './Problem';
+import moment from 'moment';
 
 
 /*
@@ -18,8 +20,59 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 */
 
+const API_URL = process.env.REACT_APP_API_URI
+
+function DisplayProblems(problems: Problem[]) {
+    let elements = [];
+    for (let index in problems) {
+      let accordion = <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMore/>}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography  sx={{ width: '33%', flexShrink: 0 }}>{problems[index].title}</Typography>
+        <Typography  sx={{ color: 'text.secondary', flexShrink: 0 }}>{problems[index].desc}</Typography>  
+        <Typography  sx={{ color: 'text.secondary', flexShrink: 0 }} justifyContent={"flex-end"}>{problems[index].datetime.fromNow()}</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        {problems[index].ProblemCard()}
+      </AccordionDetails>
+    </Accordion>
+      elements.push(accordion)
+    }
+    return <div style={{margin: "1em"}}>
+      {elements}
+    </div>
+}
 
 function ProblemListView() {
+
+    const [problems, setProblems] = useState<Problem[]>([]);
+
+    const fetchProblemList = () => {
+        fetch(API_URL+"problemlist")
+          .then(response => {
+            console.log(API_URL)
+            console.log(response)
+            return response.json()
+          })
+          .then(data => {
+            let problems: Problem[] = [];
+            for (let key in data) {
+              let entry = data[key];
+              let prob = new Problem(key, entry.title, entry.description, entry.problem, entry.submitter, moment(entry.datetime))
+              if (prob.hasTitle())
+              problems.push(prob)
+              console.log(problems)
+            }
+            setProblems(problems)
+          })
+      }
+
+    useEffect(() => {
+      fetchProblemList();
+    }, []);
     // TODO: pull list of problems from GET /problems/ API route
     //          display metadata about problem including
     //              name
@@ -30,7 +83,7 @@ function ProblemListView() {
     //              alphabetical
     //              submitter
     //              datetime created
-    return <div/>
+    return DisplayProblems(problems)
 }
 
 export default ProblemListView;
