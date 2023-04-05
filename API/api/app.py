@@ -27,7 +27,8 @@ def test():
 @app.route('/problem', methods=['GET', 'POST', 'DELETE'])
 def problem():
     if request.method == "POST":
-        data = request.get_json().body()
+        data = request.get_json()
+        data = data['body']
         data['datetime'] = datetime.datetime.now()
         update_time, ref = db.collection(u'problems').add(data)
         return jsonify(ref.id)
@@ -54,7 +55,8 @@ def problem_list():
 @app.route('/solution', methods=['GET', 'POST', 'DELETE'])
 def solution():
         if request.method == "POST":
-            data = request.get_json().body()
+            data = request.get_json()
+            data = data['body']
             data['datetime'] = datetime.datetime.now()
             update_time, ref = db.collection(u'solutions').add(data)
             return jsonify(ref.id)
