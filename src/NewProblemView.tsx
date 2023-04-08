@@ -21,7 +21,7 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 
 const API_URL = process.env.REACT_APP_API_URI
 
-function SubmitProblem(title: string, data: string, email: string, description: string) {
+function SubmitProblem(title: string, data: string[], email: string, description: string) {
     let payload = {
         "submitter": email,
         "title": title,
@@ -86,7 +86,7 @@ function NewProblemView() {
         </TextField>
         </Grid>
         <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
-        <IconButton disabled={title.length == 0 || email.length == 0 || code.length == 0} color="success" onClick={() => SubmitProblem(title, code, email, description)}>
+        <IconButton disabled={title.length == 0 || email.length == 0 || code.length == 0} color="success" onClick={() => SubmitProblem(title, code.split("\n"), email, description)}>
             <Send />
         </IconButton>
         </Grid>
