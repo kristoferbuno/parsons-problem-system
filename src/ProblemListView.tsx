@@ -31,9 +31,14 @@ function DisplayProblems(problems: Problem[]) {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography  sx={{ width: '33%', flexShrink: 0 }}>{problems[index].title}</Typography>
-        <Typography  sx={{ color: 'text.secondary', flexShrink: 0 }}>{problems[index].desc}</Typography>  
-        <Typography  sx={{ color: 'text.secondary', flexShrink: 0 }} justifyContent={"flex-end"}>{problems[index].datetime.fromNow()}</Typography>
+        <Grid
+        container
+        direction="row"
+        >
+          <Typography  sx={{ width: '33%', flexShrink: 0 }}>{problems[index].title}</Typography>
+          <Typography  sx={{ width: '50%', color: 'text.secondary', flexShrink: 0 }}>{problems[index].desc}</Typography>  
+          <Typography  sx={{ color: 'text.secondary', flexShrink: 0, justifyContent: "flex-end" }} justifyContent={"flex-end"}>{problems[index].datetime.fromNow()}</Typography>
+        </Grid>
       </AccordionSummary>
       <AccordionDetails>
         {problems[index].ProblemCard()}

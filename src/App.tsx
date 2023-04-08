@@ -6,6 +6,7 @@ import {
   RouterProvider,
   Route,
   Link,
+  useRouteLoaderData,
 } from "react-router-dom";
 import MenuIcon, { Snowboarding } from '@mui/icons-material/';
 
@@ -28,6 +29,7 @@ ctrl-f for "getAll" to get all query params from the URL
 
 
   let dummyStringList: string[] = ['A', 'B', 'C', 'D', 'E'];
+  const API_URL = process.env.REACT_APP_API_URI
 
   const router = createBrowserRouter([
     {
@@ -38,6 +40,8 @@ ctrl-f for "getAll" to get all query params from the URL
           <Link to="about">About Us</Link>
           <br/>
           <Link to="solve">Demo Problem</Link>
+          <br/>
+          <Link to="problems">Problems</Link>
           <br/>
           <Link to="new">New Problem</Link>
           <br/>
@@ -52,8 +56,14 @@ ctrl-f for "getAll" to get all query params from the URL
       element: <div>About</div>,
     },
     {
-      path: "solve",
-      element: <SolveProblemView entries={dummyStringList}/>
+      path: "solve/:problemid",
+      loader: async ({ request, params }) => {
+        return fetch(
+          API_URL+`problem?problemid=`+params.problemid,
+          { signal: request.signal }
+        );
+      },
+      element: <SolveProblemView/>
     },
     {
       path: "new",
@@ -61,6 +71,12 @@ ctrl-f for "getAll" to get all query params from the URL
     },
     {
       path: "problems",
+      loader: async ({ request, params }) => {
+        return fetch(
+          API_URL+`problemlist`,
+          { signal: request.signal }
+        );
+      },
       element: <ProblemListView></ProblemListView> // viewing list of submitted parsons' problems
     },
     {

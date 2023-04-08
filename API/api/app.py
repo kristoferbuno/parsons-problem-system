@@ -36,6 +36,7 @@ def problem():
         problemid = request.args.get('problemid')
         docref = db.collection(u'problems').document(problemid)
         doc = docref.get().to_dict()
+        doc['id'] = problemid
         return jsonify(doc)
     elif request.method == "DELETE":
         problemid = request.args.get('problemid')

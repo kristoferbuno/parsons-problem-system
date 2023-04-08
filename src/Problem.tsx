@@ -1,6 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import { Moment } from "moment";
 import { ReactElement } from "react";
+import { Link } from "react-router-dom";
 
 class Problem {
     id: string;
@@ -36,7 +37,10 @@ class Problem {
               <Typography variant="body2">
                 {this.problem}
               </Typography>
-              <Typography sx={{ fontSize: 11 }} color="text.secondary" gutterBottom align={"right"}>
+              <Link to={'/solve/'+this.id}>
+                Solve
+              </Link>
+              <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>
             </CardContent>

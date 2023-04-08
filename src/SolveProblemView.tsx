@@ -2,6 +2,9 @@ import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAv
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import { ArrowDownward, ArrowUpward, Fingerprint, Send } from '@mui/icons-material';
+import { useLoaderData, useParams } from 'react-router-dom';
+import Problem from './Problem';
+import moment from 'moment';
 
 
 /*
@@ -19,10 +22,6 @@ https://github.com/react-dnd/react-dnd/tree/main/packages/examples/src/04-sortab
 */
 
 const API_URL = process.env.REACT_APP_API_URI
-
-type DraggableListProps = {
-    entries: string[]
-}
 
 function getMorphedList(order: number[], list: string[]) {
     let morphed_list = []
@@ -48,11 +47,15 @@ function SubmitSolution(id: string, data: string[]) {
 }
 
 
-function SolveProblemView(props: DraggableListProps) {
+function SolveProblemView() {
 
     console.log(API_URL)
+    let rawData: any = useLoaderData();
+    let problem = new Problem(rawData.id, rawData.title, rawData.description, rawData.problem, rawData.submitter, moment(rawData.datetime))
+    let lines = problem.problem
+    console.log(lines)
 
-    let keys: number[] = Array.from(props.entries.keys())
+    let keys: number[] = Array.from(lines.keys())
 
     const [order, setOrder] = useState(keys);
     const [UFID, setUFID] = useState("");
@@ -75,7 +78,7 @@ function SolveProblemView(props: DraggableListProps) {
 
     function makeItemsFromStrings(list: string[]) {
         let items = []
-        for (let i = 0; i < props.entries.length; i++) {
+        for (let i = 0; i < lines.length; i++) {
             items.push(
                 <ListItem
                     key={order[i]}
@@ -86,7 +89,7 @@ function SolveProblemView(props: DraggableListProps) {
                                 <ArrowUpward />
                             </IconButton> : <div></div>
                             }
-                            {i < props.entries.length-1 ?
+                            {i < lines.length-1 ?
                             <IconButton edge="end" aria-label="delete" onClick={() => moveItemDown(order[i])}>
                                 <ArrowDownward />
                             </IconButton> : <div></div>
@@ -116,7 +119,7 @@ function SolveProblemView(props: DraggableListProps) {
     </Typography>
     <Paper variant="outlined">
         <List>
-            {makeItemsFromStrings(getMorphedList(order, props.entries))}
+            {makeItemsFromStrings(getMorphedList(order, lines))}
         </List>
     </Paper>
     <br></br>
@@ -127,7 +130,7 @@ function SolveProblemView(props: DraggableListProps) {
                 <TextField id="outlined-basic" label="UFID" variant="outlined" onChange={e => setUFID(e.target.value)}/> 
             </Grid>
             <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
-                <IconButton color="success" onClick={() => SubmitSolution(UFID, props.entries)} disabled={UFID.length != 8}>
+                <IconButton color="success" onClick={() => SubmitSolution(UFID, lines)} disabled={UFID.length != 8}>
                     <Send />
                 </IconButton>
             </Grid>
