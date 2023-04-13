@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# Developer essentials
+## Hosting project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+For the project, you'll need Node.js to run the website locally (https://nodejs.org/en/download/).
 
-## Available Scripts
+After installing, clone the git repository (https://github.com/kristoferbuno/parsons-problem-system) onto your machine. To keep your credentials saved in git so that you don't have to re-enter them every time, view this page (https://stackoverflow.com/questions/35942754/how-can-i-save-username-and-password-in-git) for more details.
 
-In the project directory, you can run:
+Run this command in the project directory
+```bash
+npm install
+```
+to install all of the necessary packages that the project depends on.
 
-### `npm start`
+To run the web server, run
+```bash
+npm run dev
+```
+in the project directory. The web server will be accessible at (localhost:3000).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Coding environment
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+For this project, it is highly recommended (but not necessary) that you use **VSCode** (https://code.visualstudio.com/download) as your primary text editor.
 
-### `npm test`
+While you are free to use any text editor you would like (Atom, Notepad++, Sublime, Vim), VSCode offers a lot of customizability, integration with other services (Git integration), extensions for different libraries (like React), and it works well out of the box.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After you install VSCode, some recommended extensions for this project include "React.js with Flow Types code snippets" (search **lsadam0.reactflowsnippets** in extensions).
 
-### `npm run build`
+In addition to these extensions, you may find it helpful to integrate your VSCode environment with this project's Github repo so you can use git functionalities in your coding environment. This can be done by navigating to the project directory in a terminal and entering
+```bash
+git remote set-url origin https://[YOUR-USERNAME]:[YOUR-ACCESS-TOKEN]@github.com/kristoferbuno/parsons-problem-system.git
+```
+with [YOUR-USERNAME] and [YOUR-ACCESS-TOKEN] being your username and token, respectively (no brackets).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Helpful shortcuts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You may already know these (or not), but some helpful shortcuts for development are listed below:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+ctrl+s: Save
+ctrl+/: Comment / Decomment current line
+ctrl+shift+f: Search entire repository
 
-### `npm run eject`
+ctrl + click: Finds definition of something / enlists references of something (incredibly useful for learning quickly!)
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Bonus tools
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In addition to VSCode, Node.js, and git, another tool that you will find helpful in this project is Postman (https://www.postman.com/downloads/). Postman allows you to test any API with whatever input you want. We recommend downloading the Desktop agent because it has less restrictions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Database info
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project utilizes Firebase for authentication and for storing data. Specifically, we use Firestore to handle data storage (https://firebase.google.com/docs/firestore).
 
-## Learn More
+Credentials are developer-provided.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Firebase is called by the API for data access.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# API info
+
+This project makes use of Python and Flask to host its API.
+
+# Front-end info
+
+This project uses React.js to build the front end (https://reactjs.org/docs/getting-started.html).
