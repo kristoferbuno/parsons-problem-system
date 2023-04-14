@@ -42,7 +42,7 @@ class Problem {
               </Link>
               <span> </span>
               <Link to={'/viewsolutions/'+this.id}>
-                View Solutions
+                View Solutions List
               </Link>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
