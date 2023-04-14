@@ -35,7 +35,7 @@ class Solution {
                 {this.solution}
               </Typography>
               <Link to={'/view/'+this.id}>
-                View Solution
+                View Solutions
               </Link>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
