@@ -40,6 +40,10 @@ class Problem {
               <Link to={'/solve/'+this.id}>
                 Solve
               </Link>
+              <span> </span>
+              <Link to={'/viewsolutions/'+this.id}>
+                View Solutions
+              </Link>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>
