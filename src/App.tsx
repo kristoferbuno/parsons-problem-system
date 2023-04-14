@@ -44,10 +44,6 @@ ctrl-f for "getAll" to get all query params from the URL
           <Link to="problems">Problems</Link>
           <br/>
           <Link to="new">New Problem</Link>
-          <br/>
-          <Link to="submitted">Submitted</Link>
-          <br/>
-          <Link to="solution">Solution</Link>
         </div>
       ),
     },
@@ -64,6 +60,16 @@ ctrl-f for "getAll" to get all query params from the URL
         );
       },
       element: <SolveProblemView/>
+    },
+    {
+      path: "viewsolutions/:problemid",
+      loader: async ({ request, params }) => {
+        return fetch(
+          API_URL+`solutionlist`, // use API route for specific problem solutions (still need to add)
+          { signal: request.signal }
+        );
+      },
+      element: <SolutionListView></SolutionListView>
     },
     {
       path: "new",

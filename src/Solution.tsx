@@ -3,45 +3,38 @@ import { Moment } from "moment";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-class Problem {
+class Solution {
     id: string;
-    title: string;
-    desc: string;
-    problem: string[];
-    submitter: string;
+    problem_uid: string;
+    UFID: string;
+    solution: string[];
     datetime: Moment;
     
-    constructor (id: string, title: string, desc: string, problem: string[], submitter: string, datetime: Moment) {
+    constructor (id: string, problem_uid: string, UFID: string, solution: string[], datetime: Moment) {
         this.id = id;
-        this.title = title;
-        this.desc = desc;
-        this.problem = problem;
-        this.submitter = submitter;
+        this.problem_uid = problem_uid;
+        this.UFID = UFID;
+        this.solution = solution;
         this.datetime = datetime;
     }
 
-    hasTitle() {
-        return this.title;
+    hasUFID() {
+      return this.UFID;
     }
 
-    ProblemCard(): ReactElement {
+    // modeled similarly to ProblemCard, for use on SolutionListView
+      // still need to add view for specific solution
+    SolutionCard(): ReactElement {
         return (
           <Card sx={{ minWidth: 275 }} key={this.id}>
             <CardContent>
               <Typography variant="h5" component="div">
-                {this.title}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {this.desc}
+                {this.UFID}
               </Typography>
               <Typography variant="body2">
-                {this.problem}
+                {this.solution}
               </Typography>
-              <Link to={'/solve/'+this.id}>
-                Solve
-              </Link>
-              <span> </span>
-              <Link to={'/viewsolutions/'+this.id}>
+              <Link to={'/view/'+this.id}>
                 View Solutions
               </Link>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
@@ -53,4 +46,5 @@ class Problem {
       }
 }
 
-export default Problem;
+
+export default Solution;
