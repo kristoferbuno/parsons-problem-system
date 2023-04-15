@@ -16,6 +16,7 @@ import SolutionListView from './SolutionListView';
 import SolveProblemView from './SolveProblemView';
 import { padding } from '@mui/system';
 import ProblemListView from './ProblemListView';
+import ViewSpecificSolution from './ViewSpecificSolution';
 
 function App() {
 
@@ -70,6 +71,16 @@ ctrl-f for "getAll" to get all query params from the URL
         );
       },
       element: <SolutionListView></SolutionListView>
+    },
+    {
+      path: "view/:solutionid",
+      loader: async ({ request, params }) => {
+        return fetch(
+          API_URL+`solution?solutionid=`+params.solutionid,
+          { signal: request.signal }
+        );
+      },
+      element: <ViewSpecificSolution></ViewSpecificSolution>
     },
     {
       path: "new",
