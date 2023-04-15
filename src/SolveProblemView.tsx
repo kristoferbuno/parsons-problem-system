@@ -1,5 +1,7 @@
 import { Avatar, ButtonGroup, Card, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import logo from './logo.svg';
 import { ArrowDownward, ArrowUpward, Fingerprint, Send } from '@mui/icons-material';
 import { useLoaderData, useParams } from 'react-router-dom';
@@ -31,23 +33,63 @@ function getMorphedList(order: number[], list: string[]) {
     return morphed_list
 }
 
-function SubmitSolution(id: string, data: string[]) {
-    let payload = {
-        "id": id,
-        "solution": data
-    }
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({body: payload})
-    };
-    fetch('https://reqres.in/api/articles', requestOptions)
-        .then(response => response.json())
-        .then(data => console.log(data))
-}
 
 
 function SolveProblemView() {
+
+    const [openSuccess, setOpenSuccess] = React.useState(false);
+    const [openFail, setOpenFail] = React.useState(false);
+    const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+        props,
+        ref,
+      ) {
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+      });
+
+
+    function SubmitSolution(id: string, data: string[]) {
+        let payload = {
+            "id": id,
+            "solution": data
+        }
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': API_URL? API_URL : "*"},
+            body: JSON.stringify({body: payload})
+        };
+        fetch(API_URL+'solution', requestOptions)
+            .then(response => {
+                if (response.ok) {
+                    response.json()
+                    handlePostSuccess();
+                    setUFID("");
+                } else {
+                    handlePostFailure();
+                    setUFID("");
+                }
+                })
+            .then(data => console.log(data))
+    }
+
+    function handlePostSuccess() {
+        setOpenSuccess(true);
+    };
+
+    function handlePostFailure() {
+        setOpenFail(true);
+    }
+      
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+                return;
+      }
+      
+      setOpenSuccess(false);
+      setOpenFail(false);
+    };
+      
+    
 
     console.log(API_URL)
     let rawData: any = useLoaderData();
@@ -127,7 +169,7 @@ function SolveProblemView() {
     <Grid container spacing={1} minHeight={100}>   
         <Grid item xs={4.5}/>
             <Grid xs={2} display="flex" justifyContent="center" alignItems="center">
-                <TextField id="outlined-basic" label="UFID" variant="outlined" onChange={e => setUFID(e.target.value)}/> 
+                <TextField id="outlined-basic" label="UFID" value = {UFID} variant="outlined" onChange={e => setUFID(e.target.value)}/> 
             </Grid>
             <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
                 <IconButton color="success" onClick={() => SubmitSolution(UFID, lines)} disabled={UFID.length != 8}>
@@ -136,6 +178,16 @@ function SolveProblemView() {
             </Grid>
         <Grid item xs={4.5}/>
     </Grid>
+    <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                Submitted Successfully!
+              </Alert>
+        </Snackbar>
+    <Snackbar open={openFail} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                Error Submitting.
+              </Alert>
+        </Snackbar>
   </Grid>
   
 }
