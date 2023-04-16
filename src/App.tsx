@@ -8,7 +8,7 @@ import {
   Link,
   useRouteLoaderData,
 } from "react-router-dom";
-import MenuIcon, { Snowboarding } from '@mui/icons-material/';
+import MenuIcon, { School, Snowboarding } from '@mui/icons-material/';
 
 import { AppBar, Button, IconButton, Paper, Toolbar, Typography } from '@mui/material';
 import NewProblemView from './NewProblemView';
@@ -117,7 +117,7 @@ ctrl-f for "getAll" to get all query params from the URL
             sx={{ mr: 0 }}
             href="/"
           >
-            <Snowboarding />
+            <School />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Parson's problems platform
