@@ -50,7 +50,7 @@ class Solution {
               <Typography variant="body2">
                 {this.SolutionData()}
               </Typography>
-              <Button variant="outlined" href={'/view/'+this.id}>View Solution</Button>
+              <Button variant="contained" href={'/view/'+this.id}>View Solution</Button>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>

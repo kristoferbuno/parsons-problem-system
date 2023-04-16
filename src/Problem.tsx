@@ -51,9 +51,9 @@ class Problem {
                 {this.desc}
               </Typography>
               {this.ProblemData()}
-              <Button variant="outlined" href={'/solve/'+this.id}>Solve</Button>
+              <Button variant="contained" href={'/solve/'+this.id}>Solve</Button>
               <span> </span>
-              <Button variant="outlined" href={'/viewsolutions/'+this.id}>View Solutions List</Button>
+              <Button variant="text" href={'/viewsolutions/'+this.id}>View Solutions List</Button>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>
