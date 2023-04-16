@@ -88,7 +88,12 @@ function ProblemListView() {
     //              alphabetical
     //              submitter
     //              datetime created
-    return DisplayProblems(problems)
+    return <div>
+      <Typography variant="h5">
+        Problems
+      </Typography>
+      {DisplayProblems(problems)}
+    </div>
 }
 
 export default ProblemListView;
