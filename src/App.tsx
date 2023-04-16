@@ -17,6 +17,7 @@ import SolveProblemView from './SolveProblemView';
 import { padding } from '@mui/system';
 import ProblemListView from './ProblemListView';
 import ViewSpecificSolution from './ViewSpecificSolution';
+import AboutView from './AboutView';
 
 function App() {
 
@@ -47,7 +48,7 @@ ctrl-f for "getAll" to get all query params from the URL
     },
     {
       path: "about",
-      element: <div>About</div>,
+      element: <AboutView/>,
     },
     {
       path: "solve/:problemid",
@@ -102,7 +103,7 @@ ctrl-f for "getAll" to get all query params from the URL
       element: <div>solution</div> // viewing a specific solution
     },
   ]);
-
+  
   return (
     <div className="App">
             <AppBar position="static">
@@ -130,6 +131,6 @@ ctrl-f for "getAll" to get all query params from the URL
     </div>
   );
 
-}
+  }
 
 export default App;
