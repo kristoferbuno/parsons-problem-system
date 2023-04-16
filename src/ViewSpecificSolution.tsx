@@ -31,7 +31,6 @@ function ViewSpecificSolution() {
     let keys: number[] = Array.from(lines.keys())
 
     const [order, setOrder] = useState(keys);
-    const [UFID, setUFID] = useState("");
 
     function makeItemsFromStrings(list: string[]) {
         let items = []
@@ -56,9 +55,14 @@ function ViewSpecificSolution() {
 
 
 
-    return <List>
+    return <Grid item xs={12} md={6}>
+    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+      Student {solution.UFID}
+    </Typography>   
+    <List>
             {makeItemsFromStrings(getMorphedList(order, lines))}
         </List>
+        </Grid>
 
 }
 

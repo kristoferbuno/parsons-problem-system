@@ -2,6 +2,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Moment } from "moment";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { Button } from '@mui/material';
 
 class Problem {
     id: string;
@@ -37,13 +38,9 @@ class Problem {
               <Typography variant="body2">
                 {this.problem}
               </Typography>
-              <Link to={'/solve/'+this.id}>
-                Solve
-              </Link>
+              <Button variant="outlined" href={'/solve/'+this.id}>Solve</Button>
               <span> </span>
-              <Link to={'/viewsolutions/'+this.id}>
-                View Solutions List
-              </Link>
+              <Button variant="outlined" href={'/viewsolutions/'+this.id}>View Solutions List</Button>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>

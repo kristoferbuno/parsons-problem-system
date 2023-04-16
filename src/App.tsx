@@ -37,14 +37,13 @@ ctrl-f for "getAll" to get all query params from the URL
       path: "/",
       element: (
         <div>
-          <h1>Hello World</h1>
-          <Link to="about">About Us</Link>
-          <br/>
-          <Link to="solve">Demo Problem</Link>
-          <br/>
-          <Link to="problems">Problems</Link>
-          <br/>
-          <Link to="new">New Problem</Link>
+          <Button variant="outlined" href="about">About Us</Button>
+          <br/><br/>
+          <Button variant="outlined" href="solve">Demo Problem</Button>
+          <br/><br/>
+          <Button variant="outlined" href="problems">Problems</Button>
+          <br/><br/>
+          <Button variant="outlined" href="new">New Problem</Button>
         </div>
       ),
     },

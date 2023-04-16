@@ -2,6 +2,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import { Moment } from "moment";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { Button } from '@mui/material';
 
 class Solution {
     id: string;
@@ -34,9 +35,7 @@ class Solution {
               <Typography variant="body2">
                 {this.solution}
               </Typography>
-              <Link to={'/view/'+this.id}>
-                View Solution
-              </Link>
+              <Button variant="outlined" href={'/view/'+this.id}>View Solution</Button>
               <Typography sx={{ fontSize: 11 }} color="text.secondary" align={"right"}>
                 id: {this.id}
               </Typography>
