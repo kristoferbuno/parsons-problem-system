@@ -65,6 +65,7 @@ def solution():
             solutionid = request.args.get('solutionid')
             docref = db.collection(u'solutions').document(solutionid)
             doc = docref.get().to_dict()
+            doc['id'] = solutionid
             return jsonify(doc)
         elif request.method == "DELETE":
             solutionid = request.args.get('solutionid')
@@ -73,7 +74,9 @@ def solution():
 
 @app.route('/solutionlist', methods=['GET'])
 def solution_list():
-    docs = db.collection(u'solutions').stream()
+    problemid = request.args.get('problemid')
+    print(problemid)
+    docs = db.collection(u'solutions').where(u'problemid', u'==', problemid).stream()
     doc_dict = {}
     for doc in docs:
         print(f'{doc.id} => {doc.to_dict()}')
