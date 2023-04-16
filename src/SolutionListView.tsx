@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import { ArrowDownward, ArrowUpward, Margin, ExpandMore } from '@mui/icons-material';
 import Solution from './Solution';
 import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 
 
 const API_URL = process.env.REACT_APP_API_URI
@@ -38,20 +39,26 @@ function DisplaySolutions(solutions: Solution[]) {
 
 function SolutionListView() {
 
+    const location = useLocation();
+    console.log(location)
+    const pathname = location.pathname.split("/")
+    const problemid = pathname[2]
+
     const [solutions, setSolutions] = useState<Solution[]>([]);
 
     const fetchSolutionList = () => {
-        fetch(API_URL+"solutionlist")
+        fetch(API_URL+"solutionlist?problemid="+problemid)
           .then(response => {
             console.log(API_URL)
             console.log(response)
             return response.json()
           })
           .then(data => {
+            console.log(data)
             let solutions: Solution[] = [];
             for (let key in data) {
               let entry = data[key];
-              let sol = new Solution(key, entry.problem_uid, entry.UFID, entry.solution, moment(entry.datetime))
+              let sol = new Solution(key, entry.problemid, entry.UFID, entry.solution, moment(entry.datetime))
               //if (sol.hasTitle())
               solutions.push(sol)
               console.log(solutions)
@@ -64,7 +71,12 @@ function SolutionListView() {
       fetchSolutionList();
     }, []);
 
-    return DisplaySolutions(solutions)
+    return <div>
+      <Typography>
+        Viewing all solutions for problem {problemid}
+      </Typography>
+      {DisplaySolutions(solutions)}
+    </div>
 }
 
 export default SolutionListView;

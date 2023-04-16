@@ -47,10 +47,11 @@ function SolveProblemView() {
       });
 
 
-    function SubmitSolution(id: string, data: string[]) {
+    function SubmitSolution(UFID: string, data: string[], problemid: string) {
         let payload = {
-            "id": id,
-            "solution": data
+            "UFID": UFID,
+            "solution": data,
+            "problemid": problemid
         }
         const requestOptions = {
             method: 'POST',
@@ -172,7 +173,7 @@ function SolveProblemView() {
                 <TextField id="outlined-basic" label="UFID" value = {UFID} variant="outlined" onChange={e => setUFID(e.target.value)}/> 
             </Grid>
             <Grid xs={1} display="flex" justifyContent="center" alignItems="center">
-                <IconButton color="success" onClick={() => SubmitSolution(UFID, lines)} disabled={UFID.length != 8}>
+                <IconButton color="success" onClick={() => SubmitSolution(UFID, lines, problem.id)} disabled={UFID.length != 8}>
                     <Send />
                 </IconButton>
             </Grid>
