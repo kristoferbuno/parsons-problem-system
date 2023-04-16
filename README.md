@@ -13,7 +13,7 @@ to install all of the necessary packages that the project depends on.
 
 To run the web server, run
 ```bash
-npm run dev
+npm start
 ```
 in the project directory. The web server will be accessible at (localhost:3000).
 
