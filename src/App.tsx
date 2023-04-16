@@ -39,8 +39,6 @@ ctrl-f for "getAll" to get all query params from the URL
         <div>
           <Button variant="outlined" href="about">About Us</Button>
           <br/><br/>
-          <Button variant="outlined" href="solve">Demo Problem</Button>
-          <br/><br/>
           <Button variant="outlined" href="problems">Problems</Button>
           <br/><br/>
           <Button variant="outlined" href="new">New Problem</Button>
