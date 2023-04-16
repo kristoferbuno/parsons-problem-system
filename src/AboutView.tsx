@@ -101,6 +101,10 @@ function AboutView() {
         </List>
     </Paper>
     <br></br>
+    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+          Students are prompted to submit their solution with their UFID. You can view all submitted solutions to a corresponding problem by clicking the "View Solutions List" button on a problem in the list. 
+    </Typography>
+
     </Grid>
 
 }
