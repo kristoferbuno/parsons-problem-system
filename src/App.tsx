@@ -63,7 +63,7 @@ ctrl-f for "getAll" to get all query params from the URL
       path: "viewsolutions/:problemid",
       loader: async ({ request, params }) => {
         return fetch(
-          API_URL+`solutionlist`, // use API route for specific problem solutions (still need to add)
+          API_URL+`solutionlist?problemid=`+params.problemid, // use API route for specific problem solutions (still need to add)
           { signal: request.signal }
         );
       },
